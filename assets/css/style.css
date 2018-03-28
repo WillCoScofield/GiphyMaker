@@ -18,3 +18,10 @@
 body{
     background-image: url("../images/giphy_logo.png ")
 }
+
+.gifNail{
+    float: left;
+    height: 287px;
+    margin: .5%;
+    width: 30%;
+}

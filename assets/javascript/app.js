@@ -19,6 +19,7 @@ $(document).ready(function () {
         animalBut.text(animalName);
         $(".gif-buttons-space").append(animalBut);
         console.log(animalName);
+        $("#inputAnimal").val("");
 
     })
 
@@ -38,7 +39,7 @@ $(document).ready(function () {
 
         var apiKey = "n9k0CCE8Ac6bgJsy7bogN8CPNgbJ2wpW";
 
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + thisAnimal + "&api_key=" + apiKey + "&limit=10";
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + thisAnimal + "&api_key=" + apiKey + "&limit=6";
 
         console.log(queryURL);
 
@@ -46,32 +47,29 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            //create divs for gifs and ratings
-            var gifDivs = $("<div class = 'gifDivs'>")
+            //create thumbnails for gifs and ratings
 
-            $(".gifsHere").prepend(gifDivs)
 
             response.data.forEach(function (gifData) {
                 console.log(gifData);
 
-                //create gif rating h3 tag and append to my div space
 
+
+                //capture desired gifData
                 var rating = gifData.rating;
-                //create gif img tag, store and append to it's rating
                 var gifURL = gifData.images.fixed_width.url;
 
+                //store in 
+                var gifThumbNails = $("<div class= 'thumbnail gifNail'>")
                 var gifImage = $("<img>").attr("src", gifURL)
-           
-
-                var gifRating = $("<p>").text("Rating: " + rating)
-
-                // $("#gifs")
-                gifDivs.append(gifRating)
-                gifRating.append(gifImage);
+                var captionDiv = $("<div class='caption'>").html("<p>Rating:" + rating + "</p></div>")
 
 
+                // append
+                $(".gifsHere").prepend(gifThumbNails);
+                gifThumbNails.append(gifImage);
+                gifThumbNails.append(captionDiv);
 
-                // console.log(response);
 
             });
 
