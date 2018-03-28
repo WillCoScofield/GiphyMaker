@@ -38,7 +38,7 @@ $(document).ready(function () {
 
         var apiKey = "n9k0CCE8Ac6bgJsy7bogN8CPNgbJ2wpW";
 
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + thisAnimal + "&api_key=" + apiKey;
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + thisAnimal + "&api_key=" + apiKey + "&limit=10";
 
         console.log(queryURL);
 
@@ -49,27 +49,27 @@ $(document).ready(function () {
             //create divs for gifs and ratings
             var gifDivs = $("<div class = 'gifDivs'>")
 
-            $(".gifsHere").append(gifDivs)
+            $(".gifsHere").prepend(gifDivs)
 
             response.data.forEach(function (gifData) {
-                // console.log(gifData.images.fixed_width.url);
+                console.log(gifData);
 
                 //create gif rating h3 tag and append to my div space
-                var 
+
                 var rating = gifData.rating;
-
-                var gifRating = $("<h3>").text("Rating: " + rating)
-
-                gifDivs.append(gifRating)
-
-
-
                 //create gif img tag, store and append to it's rating
                 var gifURL = gifData.images.fixed_width.url;
 
-                var aniGif = $("<img>").attr("src", gifURL)
+                var gifImage = $("<img>").attr("src", gifURL)
+           
 
-                gifRating.append(aniGif);
+                var gifRating = $("<p>").text("Rating: " + rating)
+
+                // $("#gifs")
+                gifDivs.append(gifRating)
+                gifRating.append(gifImage);
+
+
 
                 // console.log(response);
 
