@@ -39,7 +39,7 @@ $(document).ready(function () {
 
         var apiKey = "n9k0CCE8Ac6bgJsy7bogN8CPNgbJ2wpW";
 
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + thisAnimal + "&api_key=" + apiKey + "&limit=6";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + thisAnimal + "&api_key=" + apiKey + "&limit=25";
 
         console.log(queryURL);
 
